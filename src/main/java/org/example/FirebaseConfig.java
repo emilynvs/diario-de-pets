@@ -10,7 +10,6 @@ import java.io.FileInputStream;
 public class FirebaseConfig {
     public void initialize() {
         try{
-
             FileInputStream serviceAccount = new FileInputStream("src/main/resources/serviceAccountKey.json");
 
             FirebaseOptions options = FirebaseOptions.builder()
@@ -22,6 +21,4 @@ public class FirebaseConfig {
             throw new RuntimeException(e);
         }
     }
-
-
 }

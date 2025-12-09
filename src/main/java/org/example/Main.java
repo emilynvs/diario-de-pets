@@ -17,10 +17,12 @@ public class Main {
 
         // Criando conta
 
+      /*controller.criarConta("Naba", Animal.AVES, "Admin");
         controller.criarConta("SRA.Manteiga", Animal.CACHORRO, "admin");
         controller.criarConta("MeiaNoite", Animal.GATO, "admin");
-        controller.criarConta("Sr. falante", Animal.AVES, "admin");
-
+        controller.criarConta("Sr. falante", Animal.AVES, "admin");*/
+        controller.listarConta();
+       // Thread.sleep(5000);
 
     }
 }

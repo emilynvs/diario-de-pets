@@ -3,17 +3,18 @@ package org.example.model.entity;
 import org.example.model.enuns.Animal;
 
 public  class  Conta {
-    private int id;
+    private String id;
     private String user;
-    private Animal animal;
+    private String animal;
     private String senha;
 
+    public Conta(){}
 
     public Conta(String user, Animal animal, String senha) {
-        this.id = id;
         this.user = user;
-        this.animal = animal;
+        this.animal = animal.name();
         this.senha = senha;
+
     }
 
     public String getSenha() {
@@ -24,19 +25,18 @@ public  class  Conta {
         this.senha = senha;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
     public Animal getAnimal() {
-        return animal;
-    }
+        return Animal.valueOf(this.animal);    }
 
-    public void setAnimal(Animal animal) {
+    public void setAnimal(String animal) {
         this.animal = animal;
     }
 
@@ -46,5 +46,15 @@ public  class  Conta {
 
     public void setUser(String user) {
         this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return "Conta{" +
+                "id='" + id + '\'' +
+                ", user='" + user + '\'' +
+                ", animal=" + animal +
+                ", senha='" + senha + '\'' +
+                '}';
     }
 }
