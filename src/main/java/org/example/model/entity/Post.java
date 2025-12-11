@@ -4,19 +4,36 @@ import com.google.cloud.Date;
 
 public class Post {
 
+    private String id;
+    private String contaId;
     private String legendaPost;
-    private int idPost;
     private String imagemPost;
     private Date dataDePublicacao;
 
     public Post() {
     }
 
-    public Post(String legendaPost, int idPost, String imagemPost, Date dataDePublicacao) {
+    public Post(String contaId, String legendaPost, String imagemPost, Date dataDePublicacao) {
+        this.contaId = contaId;
         this.legendaPost = legendaPost;
-        this.idPost = idPost;
         this.imagemPost = imagemPost;
         this.dataDePublicacao = dataDePublicacao;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getContaId() {
+        return contaId;
+    }
+
+    public void setContaId(String contaId) {
+        this.contaId = contaId;
     }
 
     public String getLegendaPost() {
@@ -25,14 +42,6 @@ public class Post {
 
     public void setLegendaPost(String legendaPost) {
         this.legendaPost = legendaPost;
-    }
-
-    public int getIdPost() {
-        return idPost;
-    }
-
-    public void setIdPost(int idPost) {
-        this.idPost = idPost;
     }
 
     public String getImagemPost() {
@@ -49,5 +58,16 @@ public class Post {
 
     public void setDataDePublicacao(Date dataDePublicacao) {
         this.dataDePublicacao = dataDePublicacao;
+    }
+
+    @Override
+    public String toString() {
+        return "Post{" +
+                "id='" + id + '\'' +
+                ", contaId='" + contaId + '\'' +
+                ", legendaPost='" + legendaPost + '\'' +
+                ", imagemPost='" + imagemPost + '\'' +
+                ", dataDePublicacao=" + dataDePublicacao +
+                '}';
     }
 }

@@ -2,6 +2,8 @@ package org.example.model.entity;
 
 import org.example.model.enuns.Animal;
 
+import java.util.Map;
+
 public  class  Conta {
     private String id;
     private String user;
