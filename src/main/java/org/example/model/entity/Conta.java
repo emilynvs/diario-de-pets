@@ -2,13 +2,12 @@ package org.example.model.entity;
 
 import org.example.model.enuns.Animal;
 
-import java.util.Map;
-
 public  class  Conta {
     private String id;
     private String user;
     private String animal;
     private String senha;
+    private long timestamp;
 
     public Conta(){}
 
@@ -48,6 +47,14 @@ public  class  Conta {
 
     public void setUser(String user) {
         this.user = user;
+    }
+
+    public long getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(long timestamp) {
+        this.timestamp = timestamp;
     }
 
     @Override

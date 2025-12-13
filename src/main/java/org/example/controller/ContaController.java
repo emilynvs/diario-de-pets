@@ -18,9 +18,17 @@ public class ContaController {
     }
 
     public void listarConta(){
-        List<Conta> contas = contaService.listarConta();
-        for(Conta c: contas){
-            System.out.println(c);
+        List<Conta> contas = new ArrayList<>();
+        if(contas.isEmpty()) {
+            contas = contaService.listarConta();
+            for (Conta c : contas) {
+                System.out.println(c);
+            }
         }
+        System.out.println(contas.size());
+    }
+
+    public void atualizarUser(String idConta, String novoUser){
+        contaService.atualizarUser(idConta, novoUser);
     }
 }

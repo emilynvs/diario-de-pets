@@ -45,14 +45,13 @@ public class Main {
 
             switch (opcao) {
 
-
-                case 1 -> {
+                case 1:
                     System.out.println("\n --- LISTA DE CONTAS ---");
                     contaController.listarConta();
-                }
+                    break;
 
 
-                case 2 -> {
+                case 2:
                     System.out.print("Usuário: ");
                     String user = sc.nextLine();
 
@@ -64,20 +63,21 @@ public class Main {
                     Animal animal = Animal.valueOf(animalStr.toUpperCase());
 
                     contaController.criarConta(user, animal, senha);
-                }
+                    break;
 
+                case 3:
+                    System.out.print("Digite o id da conta: ");
+                    String idConta = sc.nextLine();
+                    System.out.print("Digite o novo user: ");
+                    String novoUser = sc.nextLine();
+                    contaController.atualizarUser(idConta, novoUser);
+                    break;
 
-                case 3 -> {
+                case 4:
                     System.out.println("Ainda em desenvolvimento");
-                }
+                    break;
 
-
-                case 4 -> {
-                    System.out.println("Ainda em desenvolvimento");
-                }
-
-
-                case 5 -> {
+                case 5:
                     System.out.print("ID da conta dona do post: ");
                     String contaId = sc.nextLine();
 
@@ -91,55 +91,58 @@ public class Main {
                     Date data = Date.fromYearMonthDay(2025, 12, 10);
 
                     postController.criarPost(contaId, legenda, imagem, data);
-                }
+                    break;
 
 
-                case 6 -> {
+                case 6:
                     System.out.println("Ainda em desenvolvimento");
+                    break;
 //                    System.out.print("ID da conta: ");
 //                    String contaId = sc.nextLine();
 
 //                    postController.listarPostsDaConta(contaId);
-                }
 
 
-                case 7 -> {
+
+                case 7:
                     System.out.print("ID do post: ");
                     String postId = sc.nextLine();
 
                     System.out.print("ID da conta: ");
-                    String contaId = sc.nextLine();
+                    contaId = sc.nextLine();
 
                     System.out.print("Nova legenda: ");
-                    String legenda = sc.nextLine();
+                    legenda = sc.nextLine();
 
                     System.out.print("Nova imagem (ou vazio): ");
-                    String imagem = sc.nextLine();
+                    imagem = sc.nextLine();
                     if (imagem.isBlank()) imagem = null;
 
                     LocalDate hoje = LocalDate.now();
-                    Date data = Date.fromYearMonthDay(hoje.getYear(), hoje.getMonthValue(), hoje.getDayOfMonth());
+                    data = Date.fromYearMonthDay(hoje.getYear(), hoje.getMonthValue(), hoje.getDayOfMonth());
 
                     Post post = new Post(contaId, legenda, imagem, data);
                     post.setId(postId);
 
                     postController.atualizarPost(post);
-                }
+                    break;
 
-                case 8 -> {
+                case 8:
                     System.out.print("ID do post: ");
-                    String postId = sc.nextLine();
+                    postId = sc.nextLine();
 
                     postController.deletarPost(postId);
-                }
+                    break;
 
-                case 0 -> {
+
+                case 0:
                     System.out.println("Saindo...");
-                }
+                    break;
 
-                default -> {
+                default:
                     System.out.println("Opção inválida!");
-                }
+
+
             }
         } while (opcao != 0);
 
