@@ -15,50 +15,6 @@ public class PostService {
         ref.setValueAsync(post);
     }
 
-//    public void listarPostsDaConta(String contaId, Consumer<List<Post>> callback) {
-//        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Post");
-
- //       ref.orderByChild("contaId").equalTo(contaId)
- //               .addListenerForSingleValueEvent(new ValueEventListener() {
-  //                  @Override
-  //                  public void onDataChange(DataSnapshot snapshot) {
- //                       List<Post> posts = new ArrayList<>();
-
- //                       for (DataSnapshot child : snapshot.getChildren()) {
-  //                          Post post = child.getValue(Post.class);
-  //                          posts.add(post);
-  //                      }
-
- //                       callback.accept(posts);
- //                   }
-
-  //                  @Override
-   //                 public void onCancelled(DatabaseError error) {
-  //                  }
-  //              });
-  //  }
-
-//    public void listarTodos(Consumer<List<Post>> callback) {
-//       DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Post");
-
-//        ref.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot snapshot) {
-//                List<Post> posts = new ArrayList<>();
-
-//                for (DataSnapshot child : snapshot.getChildren()) {
-//                    posts.add(child.getValue(Post.class));
-//                }
-
-//                callback.accept(posts);
-//            }
-
-//            @Override
-//            public void onCancelled(DatabaseError error) {
-//            }
-//        });
-//    }
-
     public void atualizarPost(Post post) {
         if (post.getId() == null) {
             throw new IllegalArgumentException("O post precisa ter um ID para ser atualizado.");

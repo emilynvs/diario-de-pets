@@ -3,6 +3,7 @@ package org.example.controller;
 import org.example.model.entity.Post;
 import org.example.model.service.PostService;
 
+import java.time.LocalDate;
 import java.util.List;
 import com.google.cloud.Date;
 
@@ -16,39 +17,8 @@ public class PostController {
         System.out.println("Post criado com sucesso!");
     }
 
-//    public void listarPostsDaConta(String contaId) {
-//        postService.listarPostsDaConta(contaId, (List<Post> posts) -> {
-
-//            System.out.println("\n--- POSTS DA CONTA " + contaId + " ---");
-
-  //          if (posts.isEmpty()) {
-    //            System.out.println("Nenhum post encontrado.");
-      //          return;
-        //    }
-
-          //  for (Post p : posts) {
-            //    System.out.println(p);
-          //  }
-    //    });
-//    }
-
-//    public void listarTodos() {
-//        postService.listarTodos((List<Post> posts) -> {
-//
- //            System.out.println("\n--- TODOS OS POSTS ---");
-
-   //         if (posts.isEmpty()) {
-     //           System.out.println("Nenhum post encontrado.");
-       //         return;
-         //   }
-
-           // for (Post p : posts) {
-             //   System.out.println(p);
-    //        }
-    //    });
-//    }
-
     public void atualizarPost(Post postAtualizado) {
+
         if (postAtualizado.getId() == null) {
             System.err.println("Erro: O post precisa ter ID para ser atualizado.");
             return;

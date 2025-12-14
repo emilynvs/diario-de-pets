@@ -31,7 +31,7 @@ public class Main {
             System.out.println("==============================");
             System.out.println("1 - Listar contas");
             System.out.println("2 - Criar conta");
-            System.out.println("3 - Atualizar conta");
+            System.out.println("3 - Atualizar nome de usuário");
             System.out.println("4 - Deletar conta");
             System.out.println("5 - Criar post");
             System.out.println("6 - Listar posts de uma conta");
@@ -88,7 +88,8 @@ public class Main {
                     String imagem = sc.nextLine();
                     if (imagem.isBlank()) imagem = null;
 
-                    Date data = Date.fromYearMonthDay(2025, 12, 10);
+                    LocalDate hoje = LocalDate.now();
+                    Date data = Date.fromYearMonthDay(hoje.getYear(), hoje.getMonthValue(), hoje.getDayOfMonth());
 
                     postController.criarPost(contaId, legenda, imagem, data);
                     break;
@@ -118,7 +119,7 @@ public class Main {
                     imagem = sc.nextLine();
                     if (imagem.isBlank()) imagem = null;
 
-                    LocalDate hoje = LocalDate.now();
+                    hoje = LocalDate.now();
                     data = Date.fromYearMonthDay(hoje.getYear(), hoje.getMonthValue(), hoje.getDayOfMonth());
 
                     Post post = new Post(contaId, legenda, imagem, data);
@@ -149,4 +150,3 @@ public class Main {
         sc.close();
     }
 }
-

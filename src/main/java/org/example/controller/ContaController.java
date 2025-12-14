@@ -25,7 +25,6 @@ public class ContaController {
                 System.out.println(c);
             }
         }
-        System.out.println(contas.size());
     }
 
     public void atualizarUser(String idConta, String novoUser){

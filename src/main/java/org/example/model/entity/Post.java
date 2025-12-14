@@ -2,6 +2,8 @@ package org.example.model.entity;
 
 import com.google.cloud.Date;
 
+import java.time.LocalDate;
+
 public class Post {
 
     private String id;
@@ -10,7 +12,7 @@ public class Post {
     private String imagemPost;
     private Date dataDePublicacao;
 
-    public Post() {
+    public Post(String contaId, String legenda, String imagem) {
     }
 
     public Post(String contaId, String legendaPost, String imagemPost, Date dataDePublicacao) {
