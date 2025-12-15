@@ -74,7 +74,9 @@ public class Main {
                     break;
 
                 case 4:
-                    System.out.println("Ainda em desenvolvimento");
+                    System.out.print("Digite o id da conta: ");
+                    idConta = sc.nextLine();
+                    contaController.deletarConta(idConta);
                     break;
 
                 case 5:

@@ -32,7 +32,12 @@ public class ContaService {
         }
     }
 
-    public void deletarConta(int idConta){
+    public void deletarConta(String idConta){
+        CountDownLatch latch = new CountDownLatch(1);
+
+        DatabaseReference ref  = FirebaseDatabase.getInstance().getReference("Conta").child(idConta);
+
+        ref.removeValueAsync();
     }
 
     public void atualizarUser(String idConta, String novoUser){

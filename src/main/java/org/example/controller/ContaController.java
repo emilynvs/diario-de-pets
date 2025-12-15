@@ -30,4 +30,8 @@ public class ContaController {
     public void atualizarUser(String idConta, String novoUser){
         contaService.atualizarUser(idConta, novoUser);
     }
+
+    public void deletarConta(String idConta){
+        contaService.deletarConta(idConta);
+    }
 }
