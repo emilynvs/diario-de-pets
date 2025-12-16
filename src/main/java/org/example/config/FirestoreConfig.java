@@ -1,4 +1,4 @@
-package org.example;
+package org.example.config;
 
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.cloud.firestore.Firestore;

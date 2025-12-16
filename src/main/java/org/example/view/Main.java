@@ -1,9 +1,9 @@
-package org.example;
+package org.example.view;
 
+import org.example.config.FirestoreConfig;
 import org.example.controller.ContaController;
 import org.example.controller.PostController;
 import org.example.model.enuns.Animal;
-import org.example.model.entity.Conta;
 import org.example.model.entity.Post;
 
 import com.google.cloud.Date;

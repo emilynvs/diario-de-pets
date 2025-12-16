@@ -2,7 +2,7 @@ package org.example.model.service;
 
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.*;
-import org.example.FirestoreConfig;
+import org.example.config.FirestoreConfig;
 import org.example.model.entity.Post;
 
 import java.util.ArrayList;

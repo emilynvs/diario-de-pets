@@ -59,11 +59,11 @@ public  class  Conta {
 
     @Override
     public String toString() {
-        return "Conta{" +
-                "id='" + id + '\'' +
-                ", user='" + user + '\'' +
-                ", animal=" + animal +
-                ", senha='" + senha + '\'' +
-                '}';
+        return "Conta {" +
+                "id= " + id +
+                ", \nuser= " + user  +
+                ", \nanimal= " + animal +
+                ", \nsenha= " + senha  +
+                "}\n";
     }
 }
