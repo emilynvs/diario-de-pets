@@ -6,9 +6,9 @@ import org.example.controller.PostController;
 import org.example.model.enuns.Animal;
 import org.example.model.entity.Post;
 
-import com.google.cloud.Date;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -90,8 +90,7 @@ public class Main {
                     String imagem = sc.nextLine();
                     if (imagem.isBlank()) imagem = null;
 
-                    LocalDate hoje = LocalDate.now();
-                    Date data = Date.fromYearMonthDay(hoje.getYear(), hoje.getMonthValue(), hoje.getDayOfMonth());
+                    Date data = new Date(); // ✔ data atual
 
                     postController.criarPost(contaId, legenda, imagem, data);
                     break;
@@ -100,9 +99,6 @@ public class Main {
                     System.out.print("ID da conta: ");
                     contaId = sc.nextLine();
                     List<Post> posts = postController.listarPostsDaConta(contaId);
-                    for (Post p : posts) {
-                        System.out.println(p);
-                    }
                     break;
 
 
@@ -121,10 +117,9 @@ public class Main {
                     imagem = sc.nextLine();
                     if (imagem.isBlank()) imagem = null;
 
-                    hoje = LocalDate.now();
-                    data = Date.fromYearMonthDay(hoje.getYear(), hoje.getMonthValue(), hoje.getDayOfMonth());
+                    Date dataAtualizada = new Date();
 
-                    Post post = new Post(contaId, legenda, imagem, data);
+                    Post post = new Post(contaId, legenda, imagem, dataAtualizada);
                     post.setId(postId);
 
                     postController.atualizarPost(post);

@@ -3,8 +3,8 @@ package org.example.controller;
 import org.example.model.entity.Post;
 import org.example.model.service.PostService;
 
+import java.util.Date;
 import java.util.List;
-import com.google.cloud.Date;
 
 public class PostController {
 
@@ -40,6 +40,7 @@ public class PostController {
         if (posts.isEmpty()) {
             System.out.println("Nenhum post encontrado para a conta " + contaId);
         } else {
+            System.out.println("Tamanho: " + posts.size());
             for (Post p : posts) {
                 System.out.println(p);
             }

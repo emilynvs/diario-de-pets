@@ -1,8 +1,7 @@
 package org.example.model.entity;
 
-import com.google.cloud.Date;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 public class Post {
 
@@ -12,7 +11,7 @@ public class Post {
     private String imagemPost;
     private Date dataDePublicacao;
 
-    public Post(String contaId, String legenda, String imagem) {
+    public Post() {
     }
 
     public Post(String contaId, String legendaPost, String imagemPost, Date dataDePublicacao) {
@@ -65,11 +64,11 @@ public class Post {
     @Override
     public String toString() {
         return "Post{" +
-                "id='" + id + '\'' +
-                ", contaId='" + contaId + '\'' +
-                ", legendaPost='" + legendaPost + '\'' +
-                ", imagemPost='" + imagemPost + '\'' +
-                ", dataDePublicacao=" + dataDePublicacao +
-                '}';
+                "id= " + id +
+                ", \ncontaId= " + contaId +
+                ", \nlegendaPost= " + legendaPost +
+                ", \nimagemPost= " + imagemPost +
+                ", \ndataDePublicacao=" + dataDePublicacao +
+                "}\n";
     }
 }

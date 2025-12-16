@@ -47,6 +47,28 @@ public class PostService {
         }
     }
 
+    public void deletarPostsDaConta(String contaId) {
+        try {
+            var snapshot = db.collection("posts")
+                    .whereEqualTo("contaId", contaId)
+                    .get()
+                    .get();
+
+            var batch = db.batch();
+
+            snapshot.getDocuments().forEach(doc ->
+                    batch.delete(doc.getReference())
+            );
+
+            batch.commit().get();
+            System.out.println("Posts da conta deletados.");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
     public List<Post> listarPostsDaConta(String contaId) {
         List<Post> posts = new ArrayList<>();
         try {
