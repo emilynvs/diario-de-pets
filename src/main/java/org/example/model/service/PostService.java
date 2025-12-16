@@ -1,31 +1,65 @@
 package org.example.model.service;
 
-import com.google.firebase.database.*;
+import com.google.api.core.ApiFuture;
+import com.google.cloud.firestore.*;
+import org.example.FirestoreConfig;
 import org.example.model.entity.Post;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
-//Estou em desenvolvimento em listar post, está dando alguns erros na hora de listar e irei resolver
+import java.util.concurrent.ExecutionException;
+
 public class PostService {
 
+    private final Firestore db;
+
+    public PostService() {
+        this.db = FirestoreConfig.initialize();
+    }
+
     public void criarPost(Post post) {
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Post").push();
-        post.setId(ref.getKey());
-        ref.setValueAsync(post);
+        try {
+            DocumentReference ref = db.collection("posts").document();
+            post.setId(ref.getId());
+            ApiFuture<WriteResult> result = ref.set(post);
+            System.out.println("Post criado em: " + result.get().getUpdateTime());
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
     }
 
     public void atualizarPost(Post post) {
-        if (post.getId() == null) {
-            throw new IllegalArgumentException("O post precisa ter um ID para ser atualizado.");
+        try {
+            DocumentReference ref = db.collection("posts").document(post.getId());
+            ApiFuture<WriteResult> result = ref.set(post);
+            System.out.println("Post atualizado em: " + result.get().getUpdateTime());
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
         }
-
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Post").child(post.getId());
-        ref.setValueAsync(post);
     }
 
     public void deletarPost(String postId) {
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Post").child(postId);
-        ref.removeValueAsync();
+        try {
+            ApiFuture<WriteResult> result = db.collection("posts").document(postId).delete();
+            System.out.println("Post deletado em: " + result.get().getUpdateTime());
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public List<Post> listarPostsDaConta(String contaId) {
+        List<Post> posts = new ArrayList<>();
+        try {
+            ApiFuture<QuerySnapshot> future = db.collection("posts").whereEqualTo("contaId", contaId).get();
+            List<QueryDocumentSnapshot> documents = future.get().getDocuments();
+            for (QueryDocumentSnapshot doc : documents) {
+                Post p = doc.toObject(Post.class);
+                p.setId(doc.getId());
+                posts.add(p);
+            }
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
+        return posts;
     }
 }

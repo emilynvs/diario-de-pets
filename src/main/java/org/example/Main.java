@@ -17,7 +17,7 @@ public class Main {
     public static void main(String[] args) {
 
 
-        new FirebaseConfig().initialize();
+        FirestoreConfig.initialize();
 
         Scanner sc = new Scanner(System.in);
         ContaController contaController = new ContaController();
@@ -96,14 +96,14 @@ public class Main {
                     postController.criarPost(contaId, legenda, imagem, data);
                     break;
 
-
                 case 6:
-                    System.out.println("Ainda em desenvolvimento");
+                    System.out.print("ID da conta: ");
+                    contaId = sc.nextLine();
+                    List<Post> posts = postController.listarPostsDaConta(contaId);
+                    for (Post p : posts) {
+                        System.out.println(p);
+                    }
                     break;
-//                    System.out.print("ID da conta: ");
-//                    String contaId = sc.nextLine();
-
-//                    postController.listarPostsDaConta(contaId);
 
 
 
