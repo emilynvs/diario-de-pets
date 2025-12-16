@@ -29,11 +29,21 @@ public class ContaController {
     }
 
     public void atualizarUser(String idConta, String novoUser){
-        contaService.atualizarUser(idConta, novoUser);
+        if (contaService.atualizarUser(idConta, novoUser)) {
+            System.out.println("Usuário atualizado!");
+        } else {
+            System.out.println("Conta não encontrada!");
+        }
+
     }
 
     public void deletarConta(String idConta){
-        postService.deletarPostsDaConta(idConta);
-        contaService.deletarConta(idConta);
+        if (contaService.deletarConta(idConta)) {
+            postService.deletarPostsDaConta(idConta);
+            System.out.println("Conta deletada com sucesso!");
+        } else {
+            System.out.println("Conta não encontrada!");
+        }
+
     }
 }

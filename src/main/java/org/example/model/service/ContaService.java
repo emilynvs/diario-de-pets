@@ -29,24 +29,45 @@ public class ContaService {
         }
     }
 
-    public void deletarConta(String idConta) {
+    public boolean deletarConta(String idConta) {
         try {
-            ApiFuture<WriteResult> writeResult = db.collection("contas").document(idConta).delete();
-            System.out.println("Conta deletada em: " + writeResult.get().getUpdateTime());
+            DocumentReference docRef = db.collection("contas").document(idConta);
+            DocumentSnapshot snapshot = docRef.get().get();
+
+            if (!snapshot.exists()) {
+                return false;
+            }
+
+            docRef.delete().get();
+            return true;
+
         } catch (InterruptedException | ExecutionException e) {
-            e.printStackTrace();
+            return false;
         }
     }
 
-    public void atualizarUser(String idConta, String novoUser) {
+
+    public boolean atualizarUser(String idConta, String novoUser) {
         try {
             DocumentReference docRef = db.collection("contas").document(idConta);
-            ApiFuture<WriteResult> future = docRef.update("user", novoUser, "timestamp", System.currentTimeMillis());
-            System.out.println("Conta atualizada em: " + future.get().getUpdateTime());
+
+            DocumentSnapshot snapshot = docRef.get().get();
+            if (!snapshot.exists()) {
+                return false;
+            }
+
+            docRef.update(
+                    "user", novoUser,
+                    "timestamp", System.currentTimeMillis()
+            ).get();
+
+            return true;
+
         } catch (InterruptedException | ExecutionException e) {
-            e.printStackTrace();
+            return false;
         }
     }
+
 
     public List<Conta> listarConta() {
         List<Conta> contas = new ArrayList<>();

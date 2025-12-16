@@ -9,6 +9,7 @@ import org.example.model.entity.Post;
 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -38,10 +39,16 @@ public class Main {
             System.out.println("7 - Atualizar post");
             System.out.println("8 - Deletar post");
             System.out.println("0 - Sair");
-            System.out.print("Escolha uma opção: ");
 
-            opcao = sc.nextInt();
-            sc.nextLine();
+            try {
+                System.out.print("Escolha uma opção: ");
+                opcao = sc.nextInt();
+                sc.nextLine();
+            } catch (InputMismatchException e) {
+                System.out.println("Digite apenas números!");
+                sc.nextLine();
+                opcao = -1;
+            }
 
             switch (opcao) {
 
@@ -90,7 +97,7 @@ public class Main {
                     String imagem = sc.nextLine();
                     if (imagem.isBlank()) imagem = null;
 
-                    Date data = new Date(); // ✔ data atual
+                    Date data = new Date();
 
                     postController.criarPost(contaId, legenda, imagem, data);
                     break;
